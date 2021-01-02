@@ -4,6 +4,7 @@ const copy = require(`copy-webpack-plugin`);
 
 module.exports = {
   entry: `./source/index.js`,
+  mode: `development`,
   output: {
     filename: `bundle.js`,
     path: path.join(__dirname, `build`),
@@ -36,7 +37,7 @@ module.exports = {
         loader: `file-loader`,
         options: {outputPath: `img`, useRelativePaths: true}
       }, {
-        test: /\.(woff, woff2)$/i,
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         loader: `file-loader`,
         options: {outputPath: `fonts`, useRelativePaths: true}
       }
