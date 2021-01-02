@@ -11,6 +11,4 @@ Thumbs.db
 *.log*
 node_modules/
 template/
-build/*.js
-build/*.css
-build/*.map
+build/
