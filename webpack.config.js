@@ -1,11 +1,13 @@
 const path = require(`path`);
 const miniCss = require(`mini-css-extract-plugin`);
+const copy = require(`copy-webpack-plugin`);
 
 module.exports = {
   entry: `./source/index.js`,
   output: {
     filename: `bundle.js`,
-    path: path.join(__dirname, `build`)
+    path: path.join(__dirname, `build`),
+    publicPath: ``,
   },
   devServer: {
     contentBase: path.join(__dirname, `build`),
@@ -29,6 +31,14 @@ module.exports = {
           `css-loader`,
           `sass-loader`,
         ]
+      }, {
+        test: /\.(png|jpg|jpeg)$/i,
+        loader: `file-loader`,
+        options: {outputPath: `img`, useRelativePaths: true}
+      }, {
+        test: /\.(woff, woff2)$/i,
+        loader: `file-loader`,
+        options: {outputPath: `fonts`, useRelativePaths: true}
       }
     ],
   },
@@ -36,6 +46,14 @@ module.exports = {
     new miniCss({
       filename: `style.css`,
     }),
+    new copy({
+      patterns: [{
+        context: `./source/`,
+        from: `**/*.html`,
+        to: `./`,
+        force: true
+      }]
+    })
   ],
   devtool: `source-map`,
 };
