@@ -1,0 +1,52 @@
+.card__body {
+  background-color: #f2f2f2;
+}
+
+.card__tagline {
+  color: #666666;
+  @include project-font(16px, 120%, 400);
+}
+
+.card__title {
+  color: #000000;
+
+  @include project-font(48px, 120%, 700);
+}
+
+.card__feature {
+  @include project-font(24px, 120%, 700);
+}
+
+.card__action {
+  color: #666666;
+
+  @include project-font(14px, 16px, 400);
+}
+
+.card__action-condition > span {
+  font-weight: 700;
+}
+
+.card__tag {
+  color: #ffffff;
+}
+
+.card__count {
+  @include project-font(42px, 100%, 400);
+}
+
+.card__metric {
+  @include project-font(21px, 100%, 400);
+}
+
+.card__additional-text {
+  color: #ffffff;
+
+  @include  project-font(13px, 120%, 400);
+}
+
+.card__link {
+  color: #1698d9;
+
+  text-underline-style: dash;
+}

@@ -1,0 +1,21 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  max-width: 100%;
+  height: calc(100vh - 1px);
+  min-height: 100vh;
+
+  background-image: url("img/pattern.png");
+}
+
+.main__content {
+  border: 1px solid red;
+}
+
+.main__text {
+  color: #ffffff;
+
+  font: 300 36px/44px "Exo2", "Arial", sans-serif;
+}
