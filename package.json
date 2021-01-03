@@ -8,7 +8,7 @@
     "eslint": "eslint src/**/*.js",
     "test": "npm run eslint",
     "build": "webpack --mode=production",
-    "start": "webpack-dev-server",
+    "start": "webpack serve",
     "test.jest": "jest",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d public"
