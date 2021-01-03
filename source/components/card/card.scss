@@ -1,23 +1,82 @@
 .card__body {
-  background-color: #f2f2f2;
+  position: relative;
+  z-index: 0;
+  width: 320px;
+  height: 480px;
+  padding-top: 21px;
+  padding-left: 50px;
+  margin-bottom: 13px;
+
+  overflow: hidden;
+  background-image: linear-gradient(
+      135deg,
+      transparent 30px,
+      #1698d9 30px,
+      #1698d9 34px,
+      #f2f2f2 34px
+  );
+  border-radius: 12px;
+  border-bottom: 4px solid #1698d9;
+  border-right: 4px solid #1698d9;
+
+  &::before,
+  &::after {
+    position: absolute;
+    display: block;
+    content: "";
+  }
+
+  &::before {
+    width: 10px;
+    left: 0;
+    bottom: -4px;
+    top: 42px;
+
+    border-left: 4px solid #1698d9;
+    border-bottom: 4px solid #1698d9;
+    border-bottom-left-radius: 12px;
+  }
+
+  &::after {
+    height: 10px;
+    left: 42px;
+    right: -4px;
+    top: 0;
+
+    border-top: 4px solid #1698d9;
+    border-right: 4px solid #1698d9;
+    border-top-right-radius: 12px;
+  }
 }
 
 .card__tagline {
+  margin-top: 0;
+  margin-bottom: 5px;
+
   color: #666666;
   @include project-font(16px, 120%, 400);
 }
 
 .card__title {
+  margin-top: 0;
+  margin-left: -2px;
+  margin-bottom: 15px;
+
   color: #000000;
 
   @include project-font(48px, 120%, 700);
 }
 
 .card__feature {
-  @include project-font(24px, 120%, 700);
+  display: block;
+  padding-left: 3px;
+
+  @include project-font(24px, 110%, 700);
 }
 
 .card__action {
+  margin-top: 0;
+
   color: #666666;
 
   @include project-font(14px, 16px, 400);
@@ -27,8 +86,31 @@
   font-weight: 700;
 }
 
+.card__action-profit {
+  margin-left: 0;
+
+  white-space: pre;
+}
+
+.card__action-profit > span {
+  font-weight: 700;
+}
+
 .card__tag {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  margin: 0;
+
   color: #ffffff;
+  background-color: #1698d9;
+  border-radius: 50%;
 }
 
 .card__count {
@@ -40,13 +122,23 @@
 }
 
 .card__additional-text {
+  margin: 0;
+
   color: #ffffff;
+  text-align: center;
 
   @include  project-font(13px, 120%, 400);
+}
+
+.card__image {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
 .card__link {
   color: #1698d9;
 
-  text-underline-style: dash;
+  text-decoration-style: dashed;
 }
