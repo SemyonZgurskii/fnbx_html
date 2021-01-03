@@ -1,6 +1,7 @@
-const MockData = [
+const mockData = [
   {
-    topText: `Сказочное зоаморское яство`,
+    id: 1,
+    topText: `Сказочное заморское яство`,
     brand: `Нямушка`,
     filling: `с фуа-гра`,
     action: {
@@ -14,8 +15,13 @@ const MockData = [
     },
     weight: 0.5,
     isActive: true,
+    images: {
+      png: {default: `img/cat@1x.png`, retina: `img/cat@2x.png`},
+      webp: {default: `img/cat@1x.webp`, retina: `img/cat@2x.webp`},
+    }
   }, {
-    topText: `Сказочное зоаморское яство`,
+    id: 2,
+    topText: `Сказочное заморское яство`,
     brand: `Нямушка`,
     filling: `с рыбой`,
     action: {
@@ -29,12 +35,17 @@ const MockData = [
     },
     weight: 2,
     isActive: true,
+    images: {
+      png: {default: `img/cat@1x.png`, retina: `img/cat@2x.png`},
+      webp: {default: `img/cat@1x.webp`, retina: `img/cat@2x.webp`},
+    }
   }, {
-    topText: `Сказочное зоаморское яство`,
+    id: 3,
+    topText: `Сказочное заморское яство`,
     brand: `Нямушка`,
-    filling: `с фуа-гра`,
+    filling: `с курой`,
     action: {
-      count: 10,
+      count: 100,
       profit: [
         {
           count: 5,
@@ -47,7 +58,11 @@ const MockData = [
     },
     weight: 5,
     isActive: false,
+    images: {
+      png: {default: `img/cat@1x.png`, retina: `img/cat@2x.png`},
+      webp: {default: `img/cat@1x.webp`, retina: `img/cat@2x.webp`},
+    }
   }
 ];
 
-export {MockData};
+export {mockData};
