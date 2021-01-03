@@ -35,23 +35,37 @@ module.exports = {
       }, {
         test: /\.(png|jpg|jpeg)$/i,
         loader: `file-loader`,
-        options: {outputPath: `img`, useRelativePaths: true}
+        options: {
+          outputPath: `img`,
+          useRelativePaths: true,
+          name: `[name].[ext]`
+        }
       }, {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         loader: `file-loader`,
-        options: {outputPath: `fonts`, useRelativePaths: true}
+        options: {
+          outputPath: `fonts`,
+          useRelativePaths: true,
+          name: `[name].[ext]`
+        }
       }
     ],
   },
   plugins: [
     new miniCss({
       filename: `style.css`,
+      attributes: {},
     }),
     new copy({
       patterns: [{
         context: `./source/`,
         from: `**/*.html`,
         to: `./`,
+        force: true
+      }, {
+        context: `./source/`,
+        from: `img`,
+        to: `img`,
         force: true
       }]
     })
