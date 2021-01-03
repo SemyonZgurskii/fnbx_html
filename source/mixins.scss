@@ -1,0 +1,6 @@
+@mixin project-font($size, $line-height, $weight) {
+  font-family: "Trebuchet MS";
+  font-size: $size;
+  line-height: $line-height;
+  font-weight: $weight;
+}
