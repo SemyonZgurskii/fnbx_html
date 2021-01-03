@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 
 function Card(props) {
   const {cardData} = props;
-  const {topText, brand, filling, action, weight, isActive} = cardData;
+  const {topText, brand, filling, action, weight, isActive, images} = cardData;
+  const {png, webp} = images;
   const {count, profit} = action;
   const Modifier = {
     selected: `card--selected`,
@@ -40,6 +41,18 @@ function Card(props) {
           <span className="card__count">{weight}</span>
           <span className="card__metric">кг</span>
         </p>
+        <picture>
+          <source
+            type="image/webp"
+            srcSet={`${webp.default} 1x, ${webp.retina} 2x`}
+          />
+          <img
+            className="card__image"
+            src={png.default}
+            srcSet={`${png.retina}`}
+            alt="изображение кота"
+          />
+        </picture>
       </div>
       <p className="card__additional-text">
         Чего сидишь? Порадуй котэ,
