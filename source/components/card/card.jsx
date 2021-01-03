@@ -56,7 +56,7 @@ function Card(props) {
       </div>
       <p className="card__additional-text">
         Чего сидишь? Порадуй котэ,
-        <a href="#" className="card__link">купи.</a>
+        <a href="#" className="card__link"> купи.</a>
       </p>
     </div>
   );
