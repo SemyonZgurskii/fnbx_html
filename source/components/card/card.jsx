@@ -19,12 +19,22 @@ function Card(props) {
           <span className="card__feature">{filling}</span>
         </h3>
         <dl className="card__action">
-          <dt className="card__action-condition">{count} порций</dt>
-          <dl className="card__action-profit">
+          <dt className="card__action-condition">
+            <span>{`${count} `}</span>
+            порций
+          </dt>
+          <dd className="card__action-profit">
+
             {profit.map((item, index) => {
-              return <span key={index}>item</span>;
+              return (
+                <React.Fragment key={index}>
+                  {item.count > 0 && <span>{`${item.count} `}</span>}
+                  {`${item.item}\n`}
+                </React.Fragment>
+              );
             })}
-          </dl>
+
+          </dd>
         </dl>
         <p className="card__tag">
           <span className="card__count">{weight}</span>
