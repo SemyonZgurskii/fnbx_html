@@ -16,6 +16,7 @@
 
 .main__content {
   width: 320px;
+  padding-top: 20px;
 }
 
 .main__text {
@@ -27,4 +28,11 @@
   color: #ffffff;
 
   font: 300 36px/44px "Exo2", "Arial", sans-serif;
+}
+
+@media (min-width: 768px) {
+  .main__content {
+    width: 700px;
+    padding-top: 40px;
+  }
 }
