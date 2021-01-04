@@ -1,0 +1,21 @@
+.products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 320px;
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+}
+
+.products__item {
+  margin-bottom: 50px;
+}
+
+
+@media (min-width: 1440px) {
+  .products__item:not(:nth-child(3n)) {
+    margin-right: 80px;
+  }
+}

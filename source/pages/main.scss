@@ -9,17 +9,21 @@
   align-items: center;
   width: 100vw;
   max-width: 100%;
-  height: calc(100vh - 1px);
   min-height: 100vh;
 
   background-image: url("img/pattern.png");
 }
 
 .main__content {
-  border: 1px solid red;
+  width: 320px;
 }
 
 .main__text {
+  margin-top: 0;
+  //margin-bottom: 24px;
+  margin-bottom: 30px;
+
+  text-align: center;
   color: #ffffff;
 
   font: 300 36px/44px "Exo2", "Arial", sans-serif;
