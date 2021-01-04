@@ -1,19 +1,43 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
+
+const Modifier = {
+  SELECTED: `card--selected`,
+  DISABLED: `card--disabled`,
+};
 
 function Card(props) {
   const {cardData} = props;
   const {topText, brand, filling, action, weight, isActive, images} = cardData;
   const {png, webp} = images;
   const {count, profit} = action;
-  const Modifier = {
-    selected: `card--selected`,
-    disabled: `card--disabled`,
-  };
+
+  const [isClicked, setIsClicked] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
+
+  function handleCardClick() {
+    setIsClicked((prev) => !prev);
+    setIsSelected(false);
+  }
+
+  function handleCardMouseOut() {
+    if (isClicked) {
+      setIsSelected(true);
+    }
+  }
+
+  const specialClass = !isActive ? Modifier.DISABLED :
+    isSelected ? Modifier.SELECTED : ``;
 
   return (
-    <div className={`card  ${isActive ? `` : Modifier.disabled}`}>
+    <div
+      className={`card ${specialClass}`}
+    >
       <div className="card__body">
+        <div className="card__event-trigger"
+          onClick={handleCardClick}
+          onMouseOut={handleCardMouseOut}
+        />
         <p className="card__tagline">{topText}</p>
         <h3 className="card__title">
           {brand}
@@ -53,8 +77,7 @@ function Card(props) {
             alt="изображение кота"
           />
         </picture>
-      </div>
-      <p className="card__additional-text">
+      </div>      <p className="card__additional-text">
         Чего сидишь? Порадуй котэ,
         <a href="#" className="card__link"> купи.</a>
       </p>
