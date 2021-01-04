@@ -21,7 +21,6 @@
 
 .main__text {
   margin-top: 0;
-  //margin-bottom: 24px;
   margin-bottom: 30px;
 
   text-align: center;
@@ -34,5 +33,16 @@
   .main__content {
     width: 700px;
     padding-top: 40px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .main__content {
+    width: 1120px;
+    padding-top: 0px;
+  }
+
+  .main__text {
+    margin-bottom: 24px;
   }
 }
