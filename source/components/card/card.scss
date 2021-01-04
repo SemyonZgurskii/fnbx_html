@@ -1,3 +1,7 @@
+$blue: #1698d9;
+$pink: #d91667;
+$gray: #b3b3b3;
+
 .card__body {
   position: relative;
   z-index: 0;
@@ -11,13 +15,13 @@
   background-image: linear-gradient(
       135deg,
       transparent 30px,
-      #1698d9 30px,
-      #1698d9 34px,
+      $blue 30px,
+      $blue 34px,
       #f2f2f2 34px
   );
   border-radius: 12px;
-  border-bottom: 4px solid #1698d9;
-  border-right: 4px solid #1698d9;
+  border-bottom: 4px solid $blue;
+  border-right: 4px solid $blue;
 
   &::before,
   &::after {
@@ -32,8 +36,8 @@
     bottom: -4px;
     top: 42px;
 
-    border-left: 4px solid #1698d9;
-    border-bottom: 4px solid #1698d9;
+    border-left: 4px solid $blue;
+    border-bottom: 4px solid $blue;
     border-bottom-left-radius: 12px;
   }
 
@@ -43,8 +47,8 @@
     right: -4px;
     top: 0;
 
-    border-top: 4px solid #1698d9;
-    border-right: 4px solid #1698d9;
+    border-top: 4px solid $blue;
+    border-right: 4px solid $blue;
     border-top-right-radius: 12px;
   }
 }
@@ -54,6 +58,7 @@
   margin-bottom: 5px;
 
   color: #666666;
+
   @include project-font(16px, 120%, 400);
 }
 
@@ -109,7 +114,7 @@
   margin: 0;
 
   color: #ffffff;
-  background-color: #1698d9;
+  background-color: $blue;
   border-radius: 50%;
 }
 
@@ -138,11 +143,73 @@
 }
 
 .card__link {
-  color: #1698d9;
+  color: $blue;
 
   text-decoration-style: dashed;
 }
 
-@media (min-width: 768px) {
+.card--selected  {
+  & > .card__body {
+    background-image: linear-gradient(
+        135deg,
+        transparent 30px,
+        $pink 30px,
+        $pink 34px,
+        #f2f2f2 34px
+    );
+    border-bottom: 4px solid $pink;
+    border-right: 4px solid $pink;
 
+    &::before {
+      border-left: 4px solid $pink;
+      border-bottom: 4px solid $pink;
+    }
+
+    &::after {
+      border-top: 4px solid $pink;
+      border-right: 4px solid $pink;
+    }
+  }
+
+  & .card__tag {
+    background-color: $pink;
+  }
+}
+
+.card--disabled  {
+  & > .card__body {
+    background-image: linear-gradient(
+        135deg,
+        transparent 30px,
+        $gray 30px,
+        $gray 34px,
+        #f2f2f2 34px
+    );
+    border-bottom: 4px solid $gray;
+    border-right: 4px solid $gray;
+
+    &::before {
+      border-left: 4px solid $gray;
+      border-bottom: 4px solid $gray;
+    }
+
+    &::after {
+      border-top: 4px solid $gray;
+      border-right: 4px solid $gray;
+    }
+  }
+
+  & .card__tag {
+    background-color: $gray;
+  }
+
+  & .card__tagline,
+  & .card__title,
+  & .card__action {
+    color: rgba($gray, 0.5);
+  }
+
+  & .card__image {
+    opacity: 50%;
+  }
 }
