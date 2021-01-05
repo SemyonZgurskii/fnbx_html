@@ -65,7 +65,7 @@ $gray: #b3b3b3;
   }
 }
 
-.card__tagline {
+.card__upper-text {
   margin-top: 0;
   margin-bottom: 5px;
 
@@ -221,7 +221,7 @@ $gray: #b3b3b3;
     background-color: $gray;
   }
 
-  & .card__tagline,
+  & .card__upper-text,
   & .card__title,
   & .card__action {
     color: rgba($gray, 0.5);
