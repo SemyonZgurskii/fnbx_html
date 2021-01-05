@@ -26,6 +26,11 @@ function Card(props) {
     }
   }
 
+  function handleLinkClick() {
+    setIsClicked(true);
+    setIsSelected(true);
+  }
+
   const specialClass = !isActive ? Modifier.DISABLED :
     isSelected ? Modifier.SELECTED : ``;
 
@@ -79,7 +84,9 @@ function Card(props) {
         </picture>
       </div>      <p className="card__additional-text">
         Чего сидишь? Порадуй котэ,
-        <a href="#" className="card__link"> купи.</a>
+        <a href="#" className="card__link"
+          onClick={handleLinkClick}
+        > купи.</a>
       </p>
     </div>
   );
