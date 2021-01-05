@@ -6,18 +6,43 @@ import {mockData} from "../../mock";
 
 configure({adapter: new Adapter()});
 
-describe(`e2e Card`, () => {
-  it(`After click and than mouseout event on Card, it should have a special class`, () => {
-    const SPECIAL_CLASS = `card--selected`;
+const SPECIAL_CLASS = `card--selected`;
+let tree = null;
 
-    const tree = mount(
+describe(`e2e Card`, () => {
+  beforeEach(() => {
+    tree = mount(
         <Card cardData={mockData[0]}/>
     );
+  });
 
+  it(`After click and than mouseout event on Card, it should have a special class`, () => {
     tree.find(`.card__event-trigger`).simulate(`click`);
     expect(tree.find(`.card`).hasClass(SPECIAL_CLASS)).toEqual(false);
 
     tree.find(`.card__event-trigger`).simulate(`mouseOut`);
     expect(tree.find(`.card`).hasClass(SPECIAL_CLASS)).toEqual(true);
+  });
+
+  it(`Special class should disappear after click on Card with it`, () => {
+    tree.find(`.card__event-trigger`).simulate(`click`);
+    tree.find(`.card__event-trigger`).simulate(`mouseOut`);
+    tree.update();
+
+    tree.find(`.card__event-trigger`).simulate(`click`);
+
+    expect(tree.find(`.card`).hasClass(SPECIAL_CLASS)).toEqual(false);
+  });
+
+  it(`After click on bottom link, Card should have a special class`, () => {
+    tree.find(`.card__link`).simulate(`click`);
+    expect(tree.find(`.card`).hasClass(SPECIAL_CLASS)).toBe(true);
+  });
+
+  it(`After click on bottom link, and then click on Card, special class should disappear`, () => {
+    tree.find(`.card__link`).simulate(`click`);
+    tree.find(`.card__event-trigger`).simulate(`click`);
+    tree.find(`.card__event-trigger`).simulate(`mouseOut`);
+    expect(tree.find(`.card`).hasClass(SPECIAL_CLASS)).toBe(false);
   });
 });
