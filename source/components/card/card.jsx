@@ -110,7 +110,21 @@ function Card(props) {
 }
 
 Card.propTypes = {
-  cardData: PropTypes.object.isRequired,
+  cardData: PropTypes.shape({
+    brand: PropTypes.string.isRequired,
+    filling: PropTypes.string.isRequired,
+    action: PropTypes.shape({
+      count: PropTypes.number.isRequired,
+      profit: PropTypes.array.isRequired,
+    }),
+    weight: PropTypes.number.isRequired,
+    isActive: PropTypes.bool.isRequired,
+    images: PropTypes.shape({
+      png: PropTypes.objectOf(PropTypes.string).isRequired,
+      webp: PropTypes.objectOf(PropTypes.string).isRequired,
+    }),
+    description: PropTypes.string.isRequired,
+  })
 };
 
 export default Card;
