@@ -8,11 +8,12 @@ configure({adapter: new Adapter()});
 
 const SPECIAL_CLASS = `card--selected`;
 let tree = null;
+const cardData = mockData[0];
 
 describe(`e2e Card`, () => {
   beforeEach(() => {
     tree = mount(
-        <Card cardData={mockData[0]}/>
+        <Card cardData={cardData}/>
     );
   });
 
@@ -44,5 +45,14 @@ describe(`e2e Card`, () => {
     tree.find(`.card__event-trigger`).simulate(`click`);
     tree.find(`.card__event-trigger`).simulate(`mouseOut`);
     expect(tree.find(`.card`).hasClass(SPECIAL_CLASS)).toBe(false);
+  });
+
+  it(`After click on Card, additional text content should be changed`, () => {
+    const basicText = tree.find(`.card__additional-text`).text();
+    tree.find(`.card__event-trigger`).simulate(`click`);
+    tree.find(`.card__event-trigger`).simulate(`mouseOut`);
+    const changedText = tree.find(`.card__additional-text`).text();
+
+    expect(basicText).not.toEqual(changedText);
   });
 });
