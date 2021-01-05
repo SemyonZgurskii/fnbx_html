@@ -6,7 +6,7 @@ const Modifier = {
   DISABLED: `card--disabled`,
 };
 
-function getProfitLift(profit) {
+function getProfitList(profit) {
   return profit.map((item, index) => {
     return (
       <React.Fragment key={index}>
@@ -102,7 +102,7 @@ function Card(props) {
           </dt>
           <dd className="card__action-profit">
 
-            {getProfitLift(profit)}
+            {getProfitList(profit)}
 
           </dd>
         </dl>
