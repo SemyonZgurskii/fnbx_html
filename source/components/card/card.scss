@@ -21,6 +21,19 @@ $gray: #b3b3b3;
       #f2f2f2 34px
   );
   border-radius: 12px;
+
+  &::before {
+    position: absolute;
+    top: -4px;
+    left: -18px;
+    z-index: 2;
+    content: "";
+    display: block;
+    width: 58px;
+    height: 30px;
+
+    transform: rotate(-45deg);
+  }
 }
 
 .card__event-trigger {
