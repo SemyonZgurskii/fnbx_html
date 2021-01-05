@@ -17,12 +17,12 @@ function getProfitLift(profit) {
   });
 }
 
-function getAdditionalText(modifier, description, onLinkClick) {
+function getAdditionalText(modifier, description, filling, onLinkClick) {
   switch (modifier) {
     case Modifier.SELECTED:
       return <p className="card__additional-text">{description}</p>;
     case Modifier.DISABLED:
-      return <p className="card__additional-text">{description}</p>;
+      return <p className="card__additional-text">{`Печалька, ${filling} закончился.`}</p>;
     default:
       return (
         <p className="card__additional-text">
@@ -107,7 +107,7 @@ function Card(props) {
         </picture>
       </div>
 
-      {getAdditionalText(specialClass, description, handleLinkClick)}
+      {getAdditionalText(specialClass, description, filling, handleLinkClick)}
 
     </div>
   );
