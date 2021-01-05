@@ -6,9 +6,38 @@ const Modifier = {
   DISABLED: `card--disabled`,
 };
 
+function getProfitLift(profit) {
+  return profit.map((item, index) => {
+    return (
+      <React.Fragment key={index}>
+        {item.count > 0 && <span>{`${item.count} `}</span>}
+        {`${item.item}\n`}
+      </React.Fragment>
+    );
+  });
+}
+
+function getAdditionalText(modifier, description, onLinkClick) {
+  switch (modifier) {
+    case Modifier.SELECTED:
+      return <p className="card__additional-text">{description}</p>;
+    case Modifier.DISABLED:
+      return <p className="card__additional-text">{description}</p>;
+    default:
+      return (
+        <p className="card__additional-text">
+          Чего сидишь? Порадуй котэ,
+          <a href="#" className="card__link"
+            onClick={onLinkClick}
+          > купи.</a>
+        </p>
+      );
+  }
+}
+
 function Card(props) {
   const {cardData} = props;
-  const {topText, brand, filling, action, weight, isActive, images} = cardData;
+  const {topText, brand, filling, action, weight, isActive, images, description} = cardData;
   const {png, webp} = images;
   const {count, profit} = action;
 
@@ -34,6 +63,7 @@ function Card(props) {
   const specialClass = !isActive ? Modifier.DISABLED :
     isSelected ? Modifier.SELECTED : ``;
 
+
   return (
     <div
       className={`card ${specialClass}`}
@@ -55,14 +85,7 @@ function Card(props) {
           </dt>
           <dd className="card__action-profit">
 
-            {profit.map((item, index) => {
-              return (
-                <React.Fragment key={index}>
-                  {item.count > 0 && <span>{`${item.count} `}</span>}
-                  {`${item.item}\n`}
-                </React.Fragment>
-              );
-            })}
+            {getProfitLift(profit)}
 
           </dd>
         </dl>
@@ -82,12 +105,10 @@ function Card(props) {
             alt="изображение кота"
           />
         </picture>
-      </div>      <p className="card__additional-text">
-        Чего сидишь? Порадуй котэ,
-        <a href="#" className="card__link"
-          onClick={handleLinkClick}
-        > купи.</a>
-      </p>
+      </div>
+
+      {getAdditionalText(specialClass, description, handleLinkClick)}
+
     </div>
   );
 }
