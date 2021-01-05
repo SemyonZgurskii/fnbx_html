@@ -23,7 +23,11 @@ function getAdditionalText(modifier, description, filling, onLinkClick) {
     case Modifier.SELECTED:
       return <p className="card__additional-text">{description}</p>;
     case Modifier.DISABLED:
-      return <p className="card__additional-text">{`Печалька, ${filling} закончился.`}</p>;
+      return (
+        <p className="card__additional-text card__additional-text__yellow">
+          {`Печалька, ${filling} закончился.`}
+        </p>
+      );
     default:
       return (
         <p className="card__additional-text">
