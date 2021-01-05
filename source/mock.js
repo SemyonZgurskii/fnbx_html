@@ -1,7 +1,6 @@
 const mockData = [
   {
     id: 1,
-    topText: `Сказочное заморское яство`,
     brand: `Нямушка`,
     filling: `с фуа-гра`,
     action: {
@@ -22,7 +21,6 @@ const mockData = [
     }
   }, {
     id: 2,
-    topText: `Сказочное заморское яство`,
     brand: `Нямушка`,
     filling: `с рыбой`,
     action: {
@@ -43,7 +41,6 @@ const mockData = [
     }
   }, {
     id: 3,
-    topText: `Сказочное заморское яство`,
     brand: `Нямушка`,
     filling: `с курой`,
     action: {
