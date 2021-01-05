@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 import PropTypes from "prop-types";
+import useStateWithHandlers from "./hooks";
 
 const Modifier = {
   SELECTED: `card--selected`,
@@ -49,31 +50,9 @@ function Card(props) {
   const {png, webp} = images;
   const {count, profit} = action;
 
-  const [isClicked, setIsClicked] = useState(false);
-  const [isSelected, setIsSelected] = useState(false);
-  const [isHover, setIsHover] = useState(false);
-
-  function handleCardClick() {
-    setIsClicked((prev) => !prev);
-    setIsSelected(false);
-  }
-
-  function handleCardMouseOut() {
-    if (isClicked) {
-      setIsSelected(true);
-    }
-
-    setIsHover(false);
-  }
-
-  function handleLinkClick() {
-    setIsClicked(true);
-    setIsSelected(true);
-  }
-
-  function handleCardMouseOver() {
-    setIsHover(true);
-  }
+  const {state, handlers} = useStateWithHandlers();
+  const {isSelected, isHover} = state;
+  const {onCardClick, onCardMouseOut, onCardMouseOver, onLinkClick} = handlers;
 
   const specialClass = !isActive ? Modifier.DISABLED :
     isSelected ? Modifier.SELECTED : ``;
@@ -84,9 +63,9 @@ function Card(props) {
     >
       <div className="card__body">
         <div className="card__event-trigger"
-          onClick={handleCardClick}
-          onMouseOut={handleCardMouseOut}
-          onMouseOver={handleCardMouseOver}
+          onClick={onCardClick}
+          onMouseOut={onCardMouseOut}
+          onMouseOver={onCardMouseOver}
         />
 
         {getUpperText(isHover, isSelected)}
@@ -124,7 +103,7 @@ function Card(props) {
         </picture>
       </div>
 
-      {getAdditionalText(specialClass, description, filling, handleLinkClick)}
+      {getAdditionalText(specialClass, description, filling, onLinkClick)}
 
     </div>
   );
