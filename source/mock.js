@@ -15,6 +15,7 @@ const mockData = [
     },
     weight: 0.5,
     isActive: true,
+    description: `Печень утки разварная с артишоками.`,
     images: {
       png: {default: `img/cat@1x.png`, retina: `img/cat@2x.png`},
       webp: {default: `img/cat@1x.webp`, retina: `img/cat@2x.webp`},
@@ -35,6 +36,7 @@ const mockData = [
     },
     weight: 2,
     isActive: true,
+    description: `Головы щучьи с чесноком да свежайшая сёмгушка.`,
     images: {
       png: {default: `img/cat@1x.png`, retina: `img/cat@2x.png`},
       webp: {default: `img/cat@1x.webp`, retina: `img/cat@2x.webp`},
@@ -58,6 +60,7 @@ const mockData = [
     },
     weight: 5,
     isActive: false,
+    description: `Филе из цыплят с трюфелями в бульоне.`,
     images: {
       png: {default: `img/cat@1x.png`, retina: `img/cat@2x.png`},
       webp: {default: `img/cat@1x.webp`, retina: `img/cat@2x.webp`},
