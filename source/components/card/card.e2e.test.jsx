@@ -40,7 +40,9 @@ describe(`e2e Card`, () => {
     expect(tree.find(`.card`).hasClass(SPECIAL_CLASS)).toBe(true);
   });
 
-  it(`After click on bottom link, and then click on Card, special class should disappear`, () => {
+  it(`After click on bottom link, and then click on Card,
+   special class should disappear`, () => {
+
     tree.find(`.card__link`).simulate(`click`);
     tree.find(`.card__event-trigger`).simulate(`click`);
     tree.find(`.card__event-trigger`).simulate(`mouseOut`);
@@ -54,5 +56,22 @@ describe(`e2e Card`, () => {
     const changedText = tree.find(`.card__additional-text`).text();
 
     expect(basicText).not.toEqual(changedText);
+  });
+
+  it(`top text should change after hover on selected Card,
+   and change back after mouseout`, () => {
+
+    const basicText = tree.find(`.card__upper-text`).text();
+    tree.find(`.card__event-trigger`).simulate(`click`);
+    tree.find(`.card__event-trigger`).simulate(`mouseOut`);
+    tree.find(`.card__event-trigger`).simulate(`mouseOver`);
+    const changedText = tree.find(`.card__upper-text`).text();
+
+    expect(basicText).not.toEqual(changedText);
+
+    tree.update();
+    tree.find(`.card__event-trigger`).simulate(`mouseOut`);
+
+    expect(tree.find(`.card__upper-text`).text()).toEqual(basicText);
   });
 });
