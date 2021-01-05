@@ -35,14 +35,23 @@ function getAdditionalText(modifier, description, filling, onLinkClick) {
   }
 }
 
+function getUpperText(isHover, isSelected) {
+  if (isHover && isSelected) {
+    return <p className="card__upper-text card__upper-text--pink">Котэ не одобряет?</p>;
+  }
+
+  return <p className="card__upper-text">Сказочное заморское яство</p>;
+}
+
 function Card(props) {
   const {cardData} = props;
-  const {topText, brand, filling, action, weight, isActive, images, description} = cardData;
+  const {brand, filling, action, weight, isActive, images, description} = cardData;
   const {png, webp} = images;
   const {count, profit} = action;
 
   const [isClicked, setIsClicked] = useState(false);
   const [isSelected, setIsSelected] = useState(false);
+  const [isHover, setIsHover] = useState(false);
 
   function handleCardClick() {
     setIsClicked((prev) => !prev);
@@ -53,6 +62,8 @@ function Card(props) {
     if (isClicked) {
       setIsSelected(true);
     }
+
+    setIsHover(false);
   }
 
   function handleLinkClick() {
@@ -60,9 +71,12 @@ function Card(props) {
     setIsSelected(true);
   }
 
+  function handleCardMouseOver() {
+    setIsHover(true);
+  }
+
   const specialClass = !isActive ? Modifier.DISABLED :
     isSelected ? Modifier.SELECTED : ``;
-
 
   return (
     <div
@@ -72,8 +86,11 @@ function Card(props) {
         <div className="card__event-trigger"
           onClick={handleCardClick}
           onMouseOut={handleCardMouseOut}
+          onMouseOver={handleCardMouseOver}
         />
-        <p className="card__tagline">{topText}</p>
+
+        {getUpperText(isHover, isSelected)}
+
         <h3 className="card__title">
           {brand}
           <span className="card__feature">{filling}</span>
