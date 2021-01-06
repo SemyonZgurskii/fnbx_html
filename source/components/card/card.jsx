@@ -56,6 +56,7 @@ function Card(props) {
   const {brand, filling, action, weight, isActive, images, description} = cardData;
   const {png, webp} = images;
   const {count, profit} = action;
+  const formattedWeight = weight.toString().replace(`.`, `,`);
 
   const {state, handlers} = useStateWithHandlers();
   const {isSelected, isHover} = state;
@@ -93,7 +94,7 @@ function Card(props) {
           </dd>
         </dl>
         <p className="card__tag">
-          <span className="card__count">{weight}</span>
+          <span className="card__count">{formattedWeight}</span>
           <span className="card__metric">кг</span>
         </p>
         <picture>
