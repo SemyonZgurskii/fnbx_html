@@ -33,7 +33,10 @@ function getAdditionalText(modifier, description, filling, onLinkClick) {
         <p className="card__additional-text">
           Чего сидишь? Порадуй котэ,
           <a href="#" className="card__link"
-            onClick={onLinkClick}
+            onClick={(evt) => {
+              evt.preventDefault();
+              onLinkClick();
+            }}
           > купи.</a>
         </p>
       );
