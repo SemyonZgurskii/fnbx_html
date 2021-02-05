@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./card";
+import CardContainer from "./cardContainer.jsx";
 import {configure, mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import {mockData} from "../../mock";
@@ -10,10 +10,10 @@ const SPECIAL_CLASS = `card--selected`;
 let tree = null;
 const cardData = mockData[0];
 
-describe(`e2e Card`, () => {
+describe(`e2e CardContainer`, () => {
   beforeEach(() => {
     tree = mount(
-        <Card cardData={cardData}/>
+        <CardContainer cardData={cardData}/>
     );
   });
 
