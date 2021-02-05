@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Card from "../card/card.jsx";
+import CardContainer from "../cardContainer/cardContainer.jsx";
 
 function Products(props) {
   const {mockData} = props;
@@ -12,7 +12,7 @@ function Products(props) {
           <li className="products__item"
             key={cardData.id}
           >
-            <Card
+            <CardContainer
               cardData={cardData}
             />
           </li>

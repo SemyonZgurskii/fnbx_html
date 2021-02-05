@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import useStateWithHandlers from "./hooks";
 
 const Modifier = {
   SELECTED: `card--selected`,
@@ -52,15 +51,24 @@ function getUpperText(isHover, isSelected) {
 }
 
 function Card(props) {
-  const {cardData} = props;
+  const {
+    cardData,
+    isHover,
+    isSelected,
+    onCardClick,
+    onCardMouseOut,
+    onCardMouseOver,
+    onLinkClick
+  } = props;
+
   const {brand, filling, action, weight, isActive, images, description} = cardData;
   const {png, webp} = images;
   const {count, profit} = action;
   const formattedWeight = weight.toString().replace(`.`, `,`);
 
-  const {state, handlers} = useStateWithHandlers();
-  const {isSelected, isHover} = state;
-  const {onCardClick, onCardMouseOut, onCardMouseOver, onLinkClick} = handlers;
+  // const {state, handlers} = useStateWithHandlers();
+  // const {isSelected, isHover} = state;
+  // const {onCardClick, onCardMouseOut, onCardMouseOver, onLinkClick} = handlers;
 
   const specialClass = !isActive ? Modifier.DISABLED :
     isSelected ? Modifier.SELECTED : ``;
@@ -132,7 +140,13 @@ Card.propTypes = {
       webp: PropTypes.objectOf(PropTypes.string).isRequired,
     }),
     description: PropTypes.string.isRequired,
-  })
+  }),
+  isHover: PropTypes.bool.isRequired,
+  isSelected: PropTypes.bool.isRequired,
+  onCardClick: PropTypes.func.isRequired,
+  onCardMouseOut: PropTypes.func.isRequired,
+  onCardMouseOver: PropTypes.func.isRequired,
+  onLinkClick: PropTypes.func.isRequired,
 };
 
 export default Card;
